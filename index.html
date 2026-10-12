@@ -20,8 +20,9 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
   <button type="button" data-v="2">Option 2</button>
 </div>
 <script>
+var FILES={"1":"index-2.html","2":"index-1.html"};
 var f=document.getElementById("f"),b=[].slice.call(document.querySelectorAll(".sw button"));
-function go(v){v=v==="2"?"2":"1";f.src="index-"+v+".html";b.forEach(function(x){x.setAttribute("aria-pressed",x.dataset.v===v)});history.replaceState(null,"","#option-"+v);}
+function go(v){v=v==="2"?"2":"1";f.src=FILES[v];b.forEach(function(x){x.setAttribute("aria-pressed",x.dataset.v===v)});history.replaceState(null,"","#option-"+v);}
 b.forEach(function(x){x.onclick=function(){go(x.dataset.v)}});
 go(/2/.test(location.hash)?"2":"1");
 </script>
